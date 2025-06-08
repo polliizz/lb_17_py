@@ -1,0 +1,21 @@
+from assistant import Assistant
+assistant = Assistant()
+print("Консольний асистент: /add, /list, /search, /exit")
+while True:
+    cmd = input("Введіть команду: ").strip()
+    if cmd == "/add":
+        note = input("Введіть нотатку: ")
+        assistant.add_note(note)
+        print("Нотатку додано")
+    elif cmd == "/list":
+        for idx, note in enumerate(assistant.list_notes(), 1):
+            print(f"{idx}. {note}")
+    elif cmd == "/search":
+        keyword = input("Введіть ключове слово: ")
+        results = assistant.search_notes(keyword)
+        for idx, note in enumerate(results, 1):
+            print(f"{idx}. {note}")
+    elif cmd == "/exit":
+        break
+    else:
+        print("Невідома команда")
